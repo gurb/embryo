@@ -1,0 +1,1 @@
+export type map_ = Record<string, number>;
