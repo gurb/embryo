@@ -1,6 +1,6 @@
 import { map_ } from "./types.ts";
 
-export class WebGL{
+export class WebGL {
     private gl: any;
     private program: any;
     private uniforms: map_;

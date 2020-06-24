@@ -10,6 +10,7 @@ app.use(router.routes());
 app.use(async (ctx) => {
     const file_path = ctx.request.url.pathname;
     const allowed_files = [
+        "/client/main.js",
         "/index.html",
     ];
     if(allowed_files.includes(file_path)){
