@@ -3,7 +3,7 @@ import { map_ } from "./types.ts";
 export class WebGL {
     private gl: any;
     private program: any;
-    private uniforms: map_;
+    private uniforms: map_ | any;
 
     constructor(gl:any, vertexShader:string, fragmentShader:string){
         this.gl = gl;
@@ -11,12 +11,11 @@ export class WebGL {
         this.createAndAttachShader(vertexShader, "vertex");
         this.createAndAttachShader(fragmentShader, "fragment");
         this.link();
-
         this.uniforms = {};
     }
 
     private createAndAttachShader(shaderCode:string, shaderType:string){
-        let shader;
+        let shader: any;
         if(shaderType=="vertex"){ shader = this.gl.createShader(this.gl.VERTEX_SHADER); }
         else if(shaderType=="fragment") { shader = this.gl.createShader(this.gl.FRAGMENT_SHADER); }
         else return null;
@@ -42,15 +41,15 @@ export class WebGL {
         this.gl.useProgram(this.program);
     }
 
-    get getGL(){
+    getGL(){
         return this.gl
     }
     
-    get programID(){
+    programID(){
         return this.program;
     }
 
-    set uniform(uniform_name: string){
+    uniform(uniform_name: string){
         this.uniforms[uniform_name] = this.gl.getUniformLocation(this.program, uniform_name);
     }
 
