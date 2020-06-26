@@ -7,7 +7,7 @@ task("compile", [], async function(){
 
 desc("Run");
 task("start", [], async function(){
-    await sh("deno run --allow-env --allow-net --allow-read src/server.ts",);
+    await sh("deno run --unstable --allow-env --allow-net --allow-read src/server.tsx",);
 });
 
 desc("Cached");

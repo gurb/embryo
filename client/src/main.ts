@@ -1,23 +1,19 @@
-/// <reference lib="dom" />
+// import { read_file } from "../lib/utils.ts"; 
+//import { a_foo } from "../lib/utils.ts"; 
+import { WebGL } from "../webgl.ts";
 
-import {WebGL} from "../webgl.ts";
 
-var vertexShader = `#version 300 es
-        
-in vec3 aVertexPosition;
-uniform float uMoveX;
-void main(){
-    //gl_Position = projectionMatrix * modelViewMatrix * vec4(aVertexPosition, 1.0);
-    gl_Position = vec4(aVertexPosition + vec3(uMoveX, 0.0f, 0.0f), 1.0);
-}`;
+// async function read_file(path: string){
+//     const decoder = new TextDecoder('utf-8');
+//     const data = Deno.readFileSync(path);
+//     return decoder.decode(data);
+// }
 
-var fragmentShader = `#version 300 es
-        
-precision mediump float;
-out vec4 outColor;
-void main(){
-    outColor = vec4(0.0, 0.0, 0.0, 1.0);
-}`;
+// var vertexShader = await read_file("../shaders/triangle/vertexShader.glsl");
+// var fragmentShader = await read_file("../shaders/triangle/fragmentShader.glsl");
+
+//a_foo();
+
 var positions = [
     -0.6, -0.6, 0.0,
     0.5, -0.5, 0.0,
@@ -26,11 +22,13 @@ var positions = [
 
 var deger = 0;
 
-function main(){
+
+export function main_f(){
+    console.log(Deno.cwd());
     var canvas: HTMLCanvasElement = document.createElement("canvas");
     document.body.appendChild(canvas);
     var gl:any = canvas.getContext('webgl2')
-    var GL = new WebGL(gl, vertexShader, fragmentShader);
+    var GL = new WebGL(gl, "vertexShader", "fragmentShader");
     GL.use();
     gl = GL.getGL();
     let program = GL.programID();
@@ -82,5 +80,3 @@ function main(){
     }
     animate(0);
 }
-
-main();

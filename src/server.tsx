@@ -1,6 +1,6 @@
-import { Application, send } from "./deps.ts";
+import { Application, send} from "./deps.ts";
 
-import router from "./router.ts";
+import router from "./router.tsx";
 
 const app = new Application();
 const PORT = 8000;
@@ -21,5 +21,6 @@ app.use(async (ctx) => {
 })
 
 if(import.meta.main){
+    console.log(Deno.cwd());
     await app.listen({ port: PORT });
 }

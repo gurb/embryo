@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
 		"strict": true,
-        "lib": ["ES6", "dom"],
+        "lib": ["ES2019", "dom"],
 	}
 }
